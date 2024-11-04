@@ -60,6 +60,150 @@
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/lineicons.css" />
     <link rel="stylesheet" href="assets/css/ud-styles.css" />
+
+    <style>
+      .ud-demos {
+        padding: 120px 0;
+        position: relative;
+        background: var(--ud-primary-color);
+      }
+
+      .ud-video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .ud-video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .ud-video-caption {
+        color: var(--ud-white);
+      }
+
+      .ud-video-caption h4 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .ud-video-caption p {
+        opacity: 0.8;
+      }
+
+      .ud-history {
+        padding: 120px 0;
+        position: relative;
+        background: var(--ud-primary-color);
+      }
+
+      .timeline-container {
+        padding: 60px 0;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .timeline {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 40px;
+      }
+
+      /* The line */
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.3);
+        z-index: 1;
+        transform: translateY(-50%);
+      }
+
+      .event {
+        position: relative;
+        width: 33.33%;
+        text-align: center;
+        z-index: 2;
+      }
+
+      .content {
+        margin-bottom: 50px;
+      }
+
+      .year {
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .circle {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        color: var(--ud-primary-color);
+        font-weight: bold;
+        box-shadow: 0 0 0 4px var(--ud-primary-color);
+        position: relative;
+        z-index: 3;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .timeline {
+          flex-direction: column;
+          margin: 0;
+        }
+
+        .timeline::before {
+          top: 0;
+          left: 50%;
+          width: 4px;
+          height: 100%;
+          transform: translateX(-50%);
+        }
+
+        .event {
+          width: 100%;
+          margin-bottom: 60px;
+        }
+
+        .event:last-child {
+          margin-bottom: 0;
+        }
+
+        .content {
+          margin-bottom: 20px;
+        }
+
+        .circle {
+          margin: 20px auto 0;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ====== Header Start ====== -->
@@ -82,7 +226,9 @@
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#home">Home</a>
                   </li>
-
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#demos">Demos</a>
+                  </li>
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#about">About</a>
                   </li>
@@ -95,54 +241,7 @@
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#contact">Contact</a>
                   </li>
-                  <li class="nav-item nav-item-has-children">
-                    <a href="javascript:void(0)"> Pages </a>
-                    <ul class="ud-submenu">
-                      <li class="ud-submenu-item">
-                        <a href="about.html" class="ud-submenu-link">
-                          About Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="pricing.html" class="ud-submenu-link">
-                          Pricing Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="contact.html" class="ud-submenu-link">
-                          Contact Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="blog.html" class="ud-submenu-link">
-                          Blog Grid Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="blog-details.html" class="ud-submenu-link">
-                          Blog Details Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="login.html" class="ud-submenu-link">
-                          Sign In Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="404.html" class="ud-submenu-link">404 Page</a>
-                      </li>
-                    </ul>
-                  </li>
                 </ul>
-              </div>
-
-              <div class="navbar-btn d-none d-sm-inline-block">
-                <a href="login.html" class="ud-main-btn ud-login-btn">
-                  Sign In
-                </a>
-                <a class="ud-main-btn ud-white-btn" href="javascript:void(0)">
-                  Sign Up
-                </a>
               </div>
             </nav>
           </div>
@@ -282,6 +381,65 @@
     </section>
     <!-- ====== Features End ====== -->
 
+    <!-- ====== Demos Start ====== -->
+    <section id="demos" class="ud-demos">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <h2>See Sveltos in Action</h2>
+              <p>Watch our demos to see how Sveltos simplifies Kubernetes add-ons management</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <!-- YouTube Video Section -->
+          <div class="col-lg-6">
+            <div class="ud-demo-video wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-video-caption text-center mt-4">
+                <h4>Sveltos User Interface Video</h4>
+                <p>Get a quick visual tour of Sveltos's intuitive UI</p>
+                <div class="text-center mt-4">
+                  <div class="ud-video-wrapper">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe 
+                        class="embed-responsive-item"
+                        src="https://www.youtube.com/embed/GspTTGAmQwk"
+                        title="Sveltos UI Demo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Click-through Demo Section -->
+          <div class="col-lg-6">
+            <div class="ud-demo-video wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-video-caption text-center mt-4">
+                <h4>Sveltos Click-through Demo</h4>
+                <p>Take a self-paced, step-by-step overview of Sveltos top features and workflow</p>
+                <div class="text-center mt-4">
+                  <div>
+                    <script async src="https://js.storylane.io/js/v2/storylane.js"></script>
+                    <div class="sl-embed" style="position:relative;padding-bottom:calc(53.09% + 25px);width:100%;height:0;transform:scale(1)">
+                      <iframe loading="lazy" class="sl-demo" src="https://app.storylane.io/demo/ehwfjncpbykl?embed=inline" name="sl-embed" allow="fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%!important;height:100%!important;border:1px solid rgba(63,95,172,0.35);box-shadow: 0px 0px 18px rgba(26, 19, 72, 0.15);border-radius:10px;box-sizing:border-box;"></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Demos End ====== -->
+
     <!-- ====== About Start ====== -->
     <section id="about" class="ud-about">
       <div class="container">
@@ -346,7 +504,7 @@
                 </ul>
               </div>
               <div class="ud-pricing-footer">
-                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                <a href="https://projectsveltos.github.io/sveltos/getting_started/install/install/" class="ud-main-btn ud-border-btn">
                   Install Now
                 </a>
               </div>
@@ -373,8 +531,8 @@
                 </ul>
               </div>
               <div class="ud-pricing-footer">
-                <a href="javascript:void(0)" class="ud-main-btn ud-white-btn">
-                  Purchase Now
+                <a href="mailto:support@projectsveltos.com" class="ud-main-btn ud-white-btn">
+                  Contact Us
                 </a>
               </div>
             </div>
@@ -399,8 +557,8 @@
                 </ul>
               </div>
               <div class="ud-pricing-footer">
-                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
-                  Purchase Now
+                <a href="mailto:support@projectsveltos.com" class="ud-main-btn ud-border-btn">
+                  Contact Us
                 </a>
               </div>
             </div>
@@ -410,15 +568,14 @@
     </section>
     <!-- ====== Pricing End ====== -->
 
-    <!-- ====== FAQ Start ====== -->
+    <!-- ====== Use Cases Start ====== -->
     <section id="getting-started" class="ud-faq">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-section-title text-center mx-auto">
-              <span>Getting Started</span>
-              <h2>Start Using Sveltos</h2>
-              <p>Follow these simple steps to get started with Sveltos in your Kubernetes environment.</p>
+              <h2>Use Cases</h2>
+              <p>Sveltos is designed to cater to a wide range of use cases, from small teams to large enterprises.</p>
             </div>
           </div>
         </div>
@@ -426,30 +583,49 @@
           <div class="col-lg-6">
             <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
               <div class="accordion">
-                <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#prerequisites">
+                <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#usecase1">
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>Prerequisites</span>
+                  <span>Database as a Service (DBaaS)</span>
                 </button>
-                <div id="prerequisites" class="accordion-collapse collapse">
+                <div id="usecase1" class="accordion-collapse collapse">
                   <div class="ud-faq-body">
-                    Kubernetes v1.20+ installed and kubectl configured
+                    Project Sveltos enables efficient, declarative deployment and management of database instances across Kubernetes clusters in multi-cloud environments. It standardizes database configurations, including storage, replication, and security settings, ensuring compliance and consistency across clusters. With built-in monitoring and self-healing, Sveltos maintains database health and availability, automatically addressing issues to keep services reliable and performant.
                   </div>
                 </div>
               </div>
             </div>
             <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
               <div class="accordion">
-                <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#installation">
+                <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#usecase2">
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>Installation</span>
+                  <span>Add-ons delivery</span>
                 </button>
-                <div id="installation" class="accordion-collapse collapse">
+                <div id="usecase2" class="accordion-collapse collapse">
                   <div class="ud-faq-body">
-                    Run <code>kubectl apply -f https://projectsveltos.github.io/sveltos/addons/addons/</code>
+                    Project Sveltos streamlines the deployment and management of Kubernetes add-ons across clusters, enabling centralized control over tools like monitoring, logging, and security. By using a declarative approach aligned with GitOps, Sveltos ensures add-ons are consistently applied, version-controlled, and easily updated across environments. This automation reduces operational overhead, improves reliability, and maintains uniformity in add-on management across diverse cluster deployments.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+              <div class="accordion">
+                <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#usecase3">
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>NATS Cluster Deployment and Management</span>
+                </button>
+                <div id="usecase3" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    Project Sveltos simplifies the deployment and management of NATS clusters across Kubernetes environments, enabling consistent, automated configuration for message streaming and data distribution. With Sveltos's declarative approach, NATS configurations—such as scaling, security settings, and versioning—are uniformly applied across clusters, enhancing reliability in distributed systems. Built-in monitoring and self-healing ensure high availability, automatically addressing issues to keep the messaging infrastructure robust and responsive.
                   </div>
                 </div>
               </div>
@@ -570,41 +746,6 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-brands wow fadeInUp" data-wow-delay=".2s">
-              <div class="ud-title">
-                <h6>Trusted and Used by</h6>
-              </div>
-              <div class="ud-brands-logo">
-                <div class="ud-single-logo">
-                  <img src="assets/images/brands/ayroui.svg" alt="ayroui" />
-                </div>
-                <div class="ud-single-logo">
-                  <img src="assets/images/brands/uideck.svg" alt="uideck" />
-                </div>
-                <div class="ud-single-logo">
-                  <img
-                    src="assets/images/brands/graygrids.svg"
-                    alt="graygrids"
-                  />
-                </div>
-                <div class="ud-single-logo">
-                  <img
-                    src="assets/images/brands/lineicons.svg"
-                    alt="lineicons"
-                  />
-                </div>
-                <div class="ud-single-logo">
-                  <img
-                    src="assets/images/brands/ecommerce-html.svg"
-                    alt="ecommerce-html"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
     <!-- ====== Testimonials End ====== -->
@@ -629,7 +770,7 @@
             <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
               <div class="ud-team-image-wrapper">
                 <div class="ud-team-image">
-                  <img src="assets/images/team/team-01.png" alt="Simone Morellato" />
+                  <img src="assets/images/team/Simone-Morellato.png" alt="Simone Morellato" />
                 </div>
                 <img
                   src="assets/images/team/dotted-shape.svg"
@@ -644,7 +785,7 @@
               </div>
               <div class="ud-team-info">
                 <h5>Simone Morellato</h5>
-                <h6>Founder & CMO</h6>
+                <h6>CMO</h6>
               </div>
               <ul class="ud-team-socials">
                 <li>
@@ -664,7 +805,7 @@
             <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
               <div class="ud-team-image-wrapper">
                 <div class="ud-team-image">
-                  <img src="assets/images/team/team-02.png" alt="Gianluca Mardente" />
+                  <img src="assets/images/team/gianlucamarderte.png" alt="Gianluca Mardente" />
                 </div>
                 <img
                   src="assets/images/team/dotted-shape.svg"
